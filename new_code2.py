@@ -28,7 +28,7 @@ for i in range(-50,56):
 # Transform lists to np arrays
 list_x = np.array(list_x).reshape(-1, 1)
 list_x_pred = np.array(list_x_pred).reshape(-1, 1)
-# Do linear regression using database with 11 points
+# Do linear regression using database with 21 points
 regr = linear_model.LinearRegression()
 regr.fit(list_x,list_y)
 # Calculate value of linear regressor at 1060 points in interval x:[-5,5]
