@@ -37,7 +37,7 @@ list_x_pred = np.array(list_x_pred).reshape(-1, 1)
 
 list_y_pred = []
 short_list_y_pred = []
-for alpha_value in [0.0001,1,10000,100000000]:
+for alpha_value in [0.0001,0.1,10000,100000000]:
 #for alpha_value in [0.0001,0.001,0.1,1]:
     krr = KernelRidge(alpha=alpha_value,kernel='polynomial',degree=4)
     #krr = KernelRidge(alpha=alpha_value,kernel='rbf')
@@ -63,7 +63,7 @@ axs[0, 0].set_ylim(-200,500)
 axs[0, 1].scatter(list_x, list_y,color='C0')
 axs[0, 1].plot(list_x_pred,list_y_pred[1], color='C1')
 #axs[0, 1].plot(list_x_pred,list_y_real,color='C0',linestyle='dashed')
-axs[0, 1].set_title(r'$\alpha = 1$')
+axs[0, 1].set_title(r'$\alpha = 10^{-1}$')
 axs[0, 1].set_xlim(-5.1,5.1)
 axs[0, 1].set_ylim(-200,500)
 axs[1, 0].scatter(list_x, list_y,color='C0')

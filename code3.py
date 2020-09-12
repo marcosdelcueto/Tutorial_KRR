@@ -29,7 +29,7 @@ for i in range(-50,56):
 list_x = np.array(list_x).reshape(-1, 1)
 list_x_pred = np.array(list_x_pred).reshape(-1, 1)
 
-krr = KernelRidge(alpha=1,kernel='polynomial',degree=4)
+krr = KernelRidge(alpha=0.1,kernel='polynomial',degree=4)
 krr.fit(list_x,list_y)
 list_y_pred = krr.predict(list_x_pred)
 new_y = krr.predict(list_x)

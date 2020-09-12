@@ -14,7 +14,7 @@ list_x_pred = []
 random.seed(2020)
 for i in range(-10,12):
     x = i/2
-    rnd_number= 1*random.uniform(-1,1)
+    rnd_number= random.uniform(-1,1)
     #y = x + rnd_number
     y = (x+4)*(x+1)*(x-1)*(x-3) + rnd_number
     list_x.append(x)
