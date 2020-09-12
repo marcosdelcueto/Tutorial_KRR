@@ -47,7 +47,7 @@ ax.xaxis.set_ticks(range(-5,6))
 ax.yaxis.set_ticks(range(-100,600,100))
 ax.set_xlabel('x')
 ax.set_ylabel('y')
-ax.annotate(u'$RMSE$ = %.2f' % rmse, xy=(0.15,0.85), xycoords='axes fraction')
+ax.annotate(u'$RMSE$ = %.1f' % rmse, xy=(0.15,0.85), xycoords='axes fraction')
 # Plot as orange line the regression line at interval
 plt.plot(list_x_pred,list_y_pred,color='C1',linestyle='solid',linewidth=2)
 # Plot as blue points the original database
