@@ -47,7 +47,7 @@ for degree_value in [2,3,4,5]:
     rmse_list.append(rmse)
     print('############################')
     print('Degree:', degree_value)
-    print('Root Mean Squared Error: %.1f' % rmse)
+    print('Root-mean-square error: %.1f' % rmse)
 # Set axes and labels
 fig, axs = plt.subplots(2, 2)
 for ax in axs.flat:
