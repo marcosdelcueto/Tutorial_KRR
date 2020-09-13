@@ -37,7 +37,8 @@ list_y_pred = regr.predict(list_x_pred)
 new_y = regr.predict(list_x)
 # Print rmse value
 rmse = math.sqrt(mean_squared_error(new_y, list_y))
-print('Root Mean Squared Error: %.2f' % rmse)
+print('############################')
+print('Root Mean Squared Error: %.1f' % rmse)
 # Set axes and labels
 fig = plt.figure()
 ax = fig.add_subplot()

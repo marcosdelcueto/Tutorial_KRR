@@ -45,7 +45,9 @@ for alpha_value in [0.0001,0.1,10000,100000000]:
     # Print rmse value
     rmse = math.sqrt(mean_squared_error(new_y, list_y))
     rmse_list.append(rmse)
-    print('Root Mean Squared Error: %.2f' % rmse)
+    print('###########################')
+    print('Alpha:', alpha_value)
+    print('Root Mean Squared Error: %.1f' % rmse)
 # Set axes and labels
 fig, axs = plt.subplots(2, 2)
 for ax in axs.flat:

@@ -45,7 +45,9 @@ for degree_value in [2,3,4,5]:
     # Print rmse value
     rmse = math.sqrt(mean_squared_error(new_y, list_y))
     rmse_list.append(rmse)
-    print('Root Mean Squared Error: %.2f' % rmse)
+    print('############################')
+    print('Degree:', degree_value)
+    print('Root Mean Squared Error: %.1f' % rmse)
 # Set axes and labels
 fig, axs = plt.subplots(2, 2)
 for ax in axs.flat:
