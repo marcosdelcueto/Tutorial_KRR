@@ -24,7 +24,7 @@ for i in range(-10,11):
     list_y.append(y)
     print(x,y)
 # Create list with 1060 points in interval x:[-5,5]
-for i in range(-50,56):
+for i in range(-50,51):
     x = 0.1*i
     list_x_pred.append(x)
     list_y_real.append((x+4)*(x+1)*(x-1)*(x-3))
@@ -36,8 +36,8 @@ list_y_pred = []
 short_list_y_pred = []
 rmse_list = []
 # For each of the tested polynomial degree values
-for alpha_value in [0.0001,0.1,10000,100000000]:
-    krr = KernelRidge(alpha=alpha_value,kernel='polynomial',degree=4)
+for degree_value in [2,3,4,5]:
+    krr = KernelRidge(alpha=1.0,kernel='polynomial',degree=degree_value)
     krr.fit(list_x,list_y)
     list_y_pred.append(krr.predict(list_x_pred))
     new_y = krr.predict(list_x)
@@ -56,32 +56,32 @@ for ax in axs.flat:
 # Subplot top-left
 axs[0, 0].scatter(list_x, list_y,color='C0')
 axs[0, 0].plot(list_x_pred,list_y_pred[0],color='C1')
-axs[0, 0].set_title(r'$\alpha = 10^{-4}$')
-axs[0, 0].set_xlim(-5.1,5.1)
-axs[0, 0].set_ylim(-200,500)
+axs[0, 0].set_title(r'$d = 2$')
+axs[0, 0].set_xlim(-5.5,5.5)
+axs[0, 0].set_ylim(-100,500)
 axs[0, 0].annotate(u'$RMSE$ = %.1f' % rmse_list[0], xy=(0.15,0.85), xycoords='axes fraction')
 # Subplot top-right
 axs[0, 1].scatter(list_x, list_y,color='C0')
 axs[0, 1].plot(list_x_pred,list_y_pred[1], color='C1')
-axs[0, 1].set_title(r'$\alpha = 10^{-1}$')
-axs[0, 1].set_xlim(-5.1,5.1)
-axs[0, 1].set_ylim(-200,500)
+axs[0, 1].set_title(r'$d = 3$')
+axs[0, 1].set_xlim(-5.5,5.5)
+axs[0, 1].set_ylim(-100,500)
 axs[0, 1].annotate(u'$RMSE$ = %.1f' % rmse_list[1], xy=(0.15,0.85), xycoords='axes fraction')
 # Subplot bottom-left
 axs[1, 0].scatter(list_x, list_y,color='C0')
 axs[1, 0].plot(list_x_pred,list_y_pred[2], color='C1')
-axs[1, 0].set_title(r'$\alpha = 10^{4}$')
-axs[1, 0].set_xlim(-5.1,5.1)
-axs[1, 0].set_ylim(-200,500)
+axs[1, 0].set_title(r'$d = 4$')
+axs[1, 0].set_xlim(-5.5,5.5)
+axs[1, 0].set_ylim(-100,500)
 axs[1, 0].annotate(u'$RMSE$ = %.1f' % rmse_list[2], xy=(0.15,0.85), xycoords='axes fraction')
 # Subplot bottom-right
 axs[1, 1].scatter(list_x, list_y,color='C0')
 axs[1, 1].plot(list_x_pred,list_y_pred[3], color='C1')
-axs[1, 1].set_title(r'$\alpha = 10^{8}$')
-axs[1, 1].set_xlim(-5.1,5.1)
-axs[1, 1].set_ylim(-200,500)
+axs[1, 1].set_title(r'$d = 5$')
+axs[1, 1].set_xlim(-5.5,5.5)
+axs[1, 1].set_ylim(-100,500)
 axs[1, 1].annotate(u'$RMSE$ = %.1f' % rmse_list[3], xy=(0.15,0.85), xycoords='axes fraction')
 # Print plot to file
-file_name='Figure_4.png'
+file_name='Figure_3.png'
 plt.savefig(file_name,format='png',dpi=600)
 plt.close()

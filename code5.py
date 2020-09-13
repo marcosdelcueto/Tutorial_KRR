@@ -7,6 +7,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from sklearn import linear_model
 from sklearn.metrics import mean_squared_error, r2_score
+from sklearn.kernel_ridge import KernelRidge
 
 # Initialize lists and set random seed
 list_x = []
@@ -22,19 +23,20 @@ for i in range(-10,11):
     list_y.append(y)
     print(x,y)
 # Create list with 1060 points in interval x:[-5,5]
-for i in range(-50,56):
+for i in range(-50,51):
     x = 0.1*i
     list_x_pred.append(x)
 # Transform lists to np arrays
 list_x = np.array(list_x).reshape(-1, 1)
 list_x_pred = np.array(list_x_pred).reshape(-1, 1)
 # Do linear regression using database with 21 points
-regr = linear_model.LinearRegression()
-regr.fit(list_x,list_y)
+krr = KernelRidge(alpha=0.1,kernel='polynomial',degree=4)
+krr.fit(list_x,list_y)
 # Calculate value of linear regressor at 1060 points in interval x:[-5,5]
-list_y_pred = regr.predict(list_x_pred)
+list_y_pred = krr.predict(list_x_pred)
 # Calculate value of linear regressor at 21 points in interval x:[-5,5]
-new_y = regr.predict(list_x)
+new_y = krr.predict(list_x)
+
 # Print rmse value
 rmse = math.sqrt(mean_squared_error(new_y, list_y))
 print('Root Mean Squared Error: %.2f' % rmse)
@@ -53,6 +55,6 @@ plt.plot(list_x_pred,list_y_pred,color='C1',linestyle='solid',linewidth=2)
 # Plot as blue points the original database
 plt.scatter(list_x, list_y,color='C0')
 # Print plot to file
-file_name='Figure_2.png'
+file_name='Figure_5.png'
 plt.savefig(file_name,format='png',dpi=600)
 plt.close()
